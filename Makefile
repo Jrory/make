@@ -31,26 +31,23 @@ objects = foo.o bar.o
 
 
 二、变量
- x = $(y) 	\n  y = 2 		"="这种定义变量方式，变量可以先使用后定义
- y := 2 	\n  x = $(y) 	":="这种定义变量方式，变量必须先定义后使用（推荐）
+ x = $(y) 	  y = 2 	"="这种定义变量方式，变量可以先使用后定义
+ y := 2 	  x = $(y) 	":="这种定义变量方式，变量必须先定义后使用（推荐）
 
 
- FOO ?= bar 	等价于 	ifeq ($(origin FOO), undefined)
-							FOO = bar
-						endif
+ FOO ?= bar 	等价于 ifeq ($(origin FOO), undefined)
+			FOO = bar
+		      endif
 
 
 $(var:a=b)”或是“${var:a=b}”，其意思是，把变量“var”中所有以“a”字串“结尾”的“a”替换成“b”字串 
-实例 : foo := a.o b.o c.o 	 ==		foo := a.o b.o c.o
-	   bar := $(foo:.o=.c)	 ==		bar := $(foo:%.o=%.c)
+实例 : foo := a.o b.o c.o 		foo := a.o b.o c.o
+      bar := $(foo:.o=.c)	  	  bar := $(foo:%.o=%.c)
 
 
-把变量的值再当成变量	x = y
-					y = z
-					a := $($(x))   此时a ＝ z
-
-
-
+把变量的值再当成变量:x = y
+		  y = z
+		  a := $($(x))   此时a ＝ z
 x = $(y)
 y = z
 z = Hello
@@ -121,9 +118,8 @@ $(if <condition>,<then-part>,<else-part> )
 3.5 call 函数
 $(call <expression>,<parm1>,<parm2>,<parm3>...)
 	－－<expression>参数中的变量，如$(1)，$(2)，$(3)等，会被参数<parm1>，<parm2>，<parm3>依次取代。而<expression>的返回值
-		就是 call函数的返回值  例如：
-								reverse = $(1) $(2)
-								foo = $(call reverse,a,b)
+		就是 call函数的返回值  例如：reverse = $(1) $(2)
+					 foo = $(call reverse,a,b)
 
 
 3.6 shell 函数
