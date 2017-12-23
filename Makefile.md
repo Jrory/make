@@ -1,6 +1,7 @@
 ## Makefile
 [原文链接](http://blog.csdn.net/ruglcc/article/details/7814546/#t3)
 ***
+![CSDN图标](https://github.com/Jrory/blog/blob/master/static/images/01.jpg "这是CSDN的图标")
 ### 一、初步认识
 **Makefile 定制整个工程的编译规则，像shell一样，也能执行操作系统：**
 ```javascript  
